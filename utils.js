@@ -193,7 +193,7 @@ utils.parseBody = function * parseBody (ctx, options, next) {
     yield * options.handler.call(ctx, ctx, options, next)
     return yield * next
   }
-  if (options.detectJSON(ctx) || ctx.request.is(options.extendTypes.json)) {
+  if (options.detectJSON(ctx)) {
     ctx.app.jsonStrict =
       typeof options.jsonStrict === 'boolean' ? options.jsonStrict : true
     ctx.request[fields] = yield ctx.request.json(options.jsonLimit)
